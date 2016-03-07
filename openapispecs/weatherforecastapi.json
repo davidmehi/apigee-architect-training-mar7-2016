@@ -1,0 +1,47 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.0",
+        "title": "Forecast Weather API"
+    },
+    "host": "dmehi-insights-prod.apigee.net",
+    "basePath": "/v1/weather",
+    "paths": {
+        "/forecast": {
+            "get": {
+                "description": "Gets `Forecast` objects.\nRequired query param of **w** determines\nlocation of forecast\n",
+                "parameters": [
+                    {
+                        "name": "w",
+                        "in": "query",
+                        "description": "WOEID location",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ForecastResponse",
+                            "type": "object",
+                            "items": {
+                                "title": "rss",
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "single": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
